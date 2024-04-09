@@ -202,7 +202,26 @@ const exercicio14 = () => {
   result.innerText = `${area}`;
 };
 const exercicio15 = () => {
-  
+  let digitou = document.getElementById("palavra").value;
+  let erro = document.getElementById("erro");
+  let resultado = document.getElementById("resultado");
+  let letra = "";
+  resultado.innerHTML = "";
+  for (let i = 0; i < digitou.length; i++) {
+    letra = digitou[i];
+    letra = letra.toUpperCase();
+    if (
+      letra == "A" ||
+      letra == "E" ||
+      letra == "I" ||
+      letra == "O" ||
+      letra == "U"
+    ) {
+      resultado.innerHTML += `A letra ${letra} é vogal <br>`;
+    } else {
+      resultado.innerHTML += `A letra ${letra} é consoante <br>`;
+    }
+  }
 };
 
 const exercicio16 = () => {
@@ -222,53 +241,113 @@ const exercicio17 = () => {
 
   result.innerText = `${area}`;
 };
- const exercicio18 = () => {
+const exercicio18 = () => {
   let baseMaior = document.getElementById("num1").value;
   let baseMenor = document.getElementById("num2").value;
   let altura = document.getElementById("num3").value;
   let result = document.getElementById("resultado");
 
-  let area = baseMaior + baseMenor * altura / 2
+  let area = baseMaior + (baseMenor * altura) / 2;
 
   result.innerText = `${area}`;
 };
 
 const exercicio19 = () => {
   let date = document.getElementById("data").value;
-  let dataAtual = 2024
+  let dataAtual = 2024;
   let result = document.getElementById("resultado");
 
-  let ano = dataAtual - date 
+  let ano = dataAtual - date;
 
-  result.innerText = `${ano}`
+  result.innerText = `${ano}`;
 };
 
-const exercicio20 = () => {}
+const exercicio20 = () => {
+  let frase = document.getElementById("frase").value;
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  error.innerText = "";
+  result.innerText = "";
 
-const exercicio21 = () => {}
+  let inversa = "";
+
+  if (frase == "") {
+    error.innerText = "Favor informar uma frase!";
+  } else {
+    for (let i = 1; i <= frase.length; i++) {
+      inversa += frase.charAt(frase.length - i);
+    }
+  }
+  result.innerHTML = inversa;
+};
+
+const exercicio21 = () => {
+  let frase = document.getElementById("frase").value;
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  error.innerText = "";
+  result.innerText = "";
+  let espacoBranco = frase.trim();
+
+  if (frase.length > 1) {
+    result.innerHTML = espacoBranco.replace(/\s/g, " ");
+  }
+};
 
 const exercicio22 = () => {
   let num = document.getElementById("num").value;
   let result = document.getElementById("resultado");
 
-  let soma = 0; 
+  let soma = 0;
   result.innerHTML = "";
 
- soma += parseInt(num);
- while (soma <= 100){
-  let numero = parseInt(prompt("Informe mais um número"));
-  if (isNaN (numero)|| numero <=0){
-    numero = parseInt(prompt ("Número Invalido, Informe novamente"));
-  }else {
-    soma += numero;
+  soma += parseInt(num);
+  while (soma <= 100) {
+    let numero = parseInt(prompt("Informe mais um número"));
+    if (isNaN(numero) || numero <= 0) {
+      numero = parseInt(prompt("Número Invalido, Informe novamente"));
+    } else {
+      soma += numero;
+    }
   }
- }
-result.innerHTML = `${soma}`;
+  result.innerHTML = `${soma}`;
 };
 
-const exercicio23 = () => {}
+const exercicio23 = () => {
+  let palavra = document.getElementById("palavra").value;
+  let frase = document.getElementById("frase").value;
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  let jogar = frase.split(" ");
+  let contador = 0;
+  error.innerHTML = "";
+  result.innerHTML = "";
 
-const exercicio24 = () => {}
+  for (let i = 0; i < jogar.length; i++) {
+    if (jogar[i] === palavra) {
+      contador++;
+    }
+
+    result.innerHTML = ` A palavra ${palavra} apareceu ${contador} vezes na frase`;
+  }
+};
+
+const exercicio24 = () => {
+  let frase = document.getElementById("frase").value;
+  let result = document.getElementById("resultado");
+
+  frase = frase.toLowerCase();
+  let palavras = frase.split(" ");
+  let qtdPalavras = palavras.length;
+  let novaPalavra = [];
+
+  for (let i = 0; i < qtdPalavras; i++) {
+    novaPalavra[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1);
+  }
+
+  let novaFrase = novaPalavra.join(" ");
+  result.innerText = novaFrase;
+};
 
 const exercicio25 = () => {
   let num1 = document.getElementById("num1").value;
@@ -276,9 +355,10 @@ const exercicio25 = () => {
   let num3 = document.getElementById("num3").value;
   let result = document.getElementById("resultado");
 
-}
+  let vetor = [num1, num2, num3];
+  vetor.sort((a, b) => a - b);
 
-
-
-
-
+  for (let i = 0; i < vetor.length; i++) {
+    result.innerText += ` ${vetor[i]}`;
+  }
+};
